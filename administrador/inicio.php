@@ -11,13 +11,15 @@
   </head>
   <body>
 
-    <nav class="navbar navbar-expand navbar-light bg-light">
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
         <div class="nav navbar-nav">
-            <a class="nav-item nav-link active" href="#"><img src="src/logo.jpg" style='width:100px; height:100px'></a>
-            <a class="nav-item nav-link" href="#">Inicio</a>
+            <a class="nav-item nav-link active" href="inicio.php"><img src="src/logo.jpg" style='width:100px; height:100px'></a>
+            <a class="nav-item nav-link" href="inicio.php">Inicio</a>
+            <a class="nav-item nav-link" href="stock.php">Stock</a>
+            <a class="nav-item nav-link" href="proveedores.php">Proveedores</a>
         </div>
     </nav>
-
+    
     <div class="container">
         <div class="row">
             <div class="col-md-12">
