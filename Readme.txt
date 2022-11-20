@@ -17,3 +17,8 @@ Extensiones:
                                 Vínculo de VS Marketplace: https://marketplace.visualstudio.com/items?itemName=Crozzo.the-powerful-bootstrap)
 Temas:
     - Bootswatch.com (https://bootswatch.com/darkly/)
+
+Como iniciar el sistema:
+    - Descargar archivos en: C:\xampp\htdocs
+    - Abrir XAMPP e iniciar Apache y MySQL
+    - Ingresar a: http://localhost/SIAGCSTOCKEMBG/
