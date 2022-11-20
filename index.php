@@ -1,13 +1,8 @@
 <?php include("template/cabecera.php")?>
 
-<div class="jumbotron">
-    <h1 class="display-3">Jumbo heading</h1>
-    <p class="lead">Jumbo helper text</p>
-    <hr class="my-2">
-    <p>More info</p>
-    <p class="lead">
-        <a class="btn btn-primary btn-lg" href="Jumbo action link" role="button">Jumbo action name</a>
-    </p>
+<div style='text-align:center'>
+    <H4>Bienvenido!</H4>
+    <a name="IS" id="IS" class="btn btn-primary" style='width:150px; height:50px' href="./administrador/" role="button">Iniciar Sesión</a>
 </div>
 
 <?php include("template/pie.php")?>
