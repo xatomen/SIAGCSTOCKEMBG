@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Title</title>
+    <title>SIA GC STOCK EMBG</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,7 +13,7 @@
 
     <nav class="navbar navbar-expand navbar-light bg-light">
         <div class="nav navbar-nav">
-            <a class="nav-item nav-link active" href="#">SIA GC</a>
+            <a class="nav-item nav-link active" href="#"><img src="src/logo.jpg" style='width:100px; height:100px'></a>
             <a class="nav-item nav-link" href="#">Inicio</a>
         </div>
     </nav>
