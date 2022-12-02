@@ -1,30 +1,30 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Inicio - SIA GC STOCK EMBG</title>
+    <title>Proveedores - SIA GC STOCK EMBG</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/style.css">    
-  </head>
+    <link rel="stylesheet" href="../../css/style.css">    
+</head>
   <body>
 
     <nav class="navbar navbar-expand navbar-dark bg-dark">
         <div class="nav navbar-nav">
-            <a class="nav-item nav-link active" href="inicio.php"><img src="src/logo.jpg" style='width:100px; height:100px'></a>
-            <a class="nav-item nav-link" href="inicio.php"><H2>Inicio</H2></a>
-            <a class="nav-item nav-link" href="./seccion/stock.php"><H2>Stock</H2></a>
-            <a class="nav-item nav-link" href="./seccion/proveedores.php"><H2>Proveedores</H2></a>
-            <a class="nav-item nav-link" href="./seccioncredenciales.php"><H2>Gestionar credenciales</H2></a>
+            <a class="nav-item nav-link active" href="../inicio.php"><img src="../src/logo.jpg" style='width:100px; height:100px'></a>
+            <a class="nav-item nav-link" href="../inicio.php"><H2>Inicio</H2></a>
+            <a class="nav-item nav-link" href="stock.php"><H2>Stock</H2></a>
+            <a class="nav-item nav-link" href="proveedores.php"><H2>Proveedores</H2></a>
+            <a class="nav-item nav-link" href="credenciales.php"><H2>Gestionar credenciales</H2></a>
         </div>
     </nav>
     
     <div class="container">
       <div>
-      <h1 class="text">Inicio</h1>
+        <h1 class="text">Proveedores</h1>
       </div>
       <div class="row">
             <div class="col-md-12">

@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'LuckiestGuy-Regular';
+    src: url(./Anton-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'Pacifico-Regular';
+    src: url(./Pacifico-Regular.ttf);
+}
+
+h2 {
+    font-family: "LuckiestGuy-Regular", sans-serif;
+}
+
+h1 {
+    font-family: "Pacifico-Regular", sans-serif;
+}

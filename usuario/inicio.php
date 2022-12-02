@@ -16,9 +16,8 @@
         <div class="nav navbar-nav">
             <a class="nav-item nav-link active" href="inicio.php"><img src="src/logo.jpg" style='width:100px; height:100px'></a>
             <a class="nav-item nav-link" href="inicio.php"><H2>Inicio</H2></a>
-            <a class="nav-item nav-link" href="./seccion/stock.php"><H2>Stock</H2></a>
-            <a class="nav-item nav-link" href="./seccion/proveedores.php"><H2>Proveedores</H2></a>
-            <a class="nav-item nav-link" href="./seccioncredenciales.php"><H2>Gestionar credenciales</H2></a>
+            <a class="nav-item nav-link" href="stock.php"><H2>Stock</H2></a>
+            <a class="nav-item nav-link" href="proveedores.php"><H2>Proveedores</H2></a>
         </div>
     </nav>
     

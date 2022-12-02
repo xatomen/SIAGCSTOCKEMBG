@@ -14,7 +14,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css">  
-    </head>
+</head>
   <body>
     <div class="container">
         <div class="row">
@@ -26,7 +26,7 @@
                 <div class="card">
                     <div class="card-header" style="text-align: center">
                         <img src="../administrador/src/logo.jpg" style="width: 100px; height: 100px;">
-                        <class ><h2>Sistema de credenciales (Administrador)</h2></class>
+                        <class ><h2>Sistema de credenciales (Usuario)</h2></class>
                     </div>
                     <div class="card-body">
                         <form method="POST">
