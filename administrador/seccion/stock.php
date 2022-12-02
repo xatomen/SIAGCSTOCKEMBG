@@ -1,47 +1,95 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <title>Stock - SIA GC STOCK EMBG</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<?php include("../template/cabecera.php");?>
+<?php
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../css/style.css">    
-    </head>
-  <body>
+$txtID=(isset($_POST['txtID']))?$_POST['txtID']:"";
+$txtCategoria=(isset($_POST['txtCategoria']))?$_POST['txtCategoria']:"";
+$accion=(isset($_POST['accion']))?$_POST['accion']:"";
 
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
-        <div class="nav navbar-nav">
-            <a class="nav-item nav-link active" href="../inicio.php"><img src="../src/logo.jpg" style='width:100px; height:100px'></a>
-            <a class="nav-item nav-link" href="../inicio.php"><H2>Inicio</H2></a>
-            <a class="nav-item nav-link" href="stock.php"><H2>Stock</H2></a>
-            <a class="nav-item nav-link" href="proveedores.php"><H2>Proveedores</H2></a>
-            <a class="nav-item nav-link" href="credenciales.php"><H2>Gestionar credenciales</H2></a>
-        </div>
-    </nav>
-    
+include("../config/bd.php");
+
+switch($accion){
+
+    case "Agregar":
+        $sentenciaSQL = $conexion->prepare("INSERT INTO categoria_insumo (CATEGORIA_INSUMO) VALUES (:CATEGORIA_INSUMO);");
+        $sentenciaSQL->bindParam(':CATEGORIA_INSUMO',$txtCategoria);
+        $sentenciaSQL->execute();
+        echo "Presionado botón agregar";
+    break;
+
+    case "Modificar":
+        echo "Presionado botón modificar";
+    break;
+
+    case "Cancelar":
+        echo "Presionado botón cancelar";
+    break;
+
+}
+
+$sentenciaSQL= $conexion->prepare("SELECT * FROM categoria_insumo");
+$sentenciaSQL->execute();
+$listaCategorias=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
+
     <div class="container">
-        <div class="title">
             <h1 class="text">Stock</h1>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="jumbotron">
-                    <h1 class="display-3">Jumbo heading</h1>
-                    <p class="lead">Jumbo helper text</p>
-                    <hr class="my-2">
-                    <p>More info</p>
-                    <p class="lead">
-                    <a class="btn btn-primary btn-lg" href="Jumbo action link" role="button">Jumbo action name</a>
-                    </p>
-                </div>
-            </div>
-            
-        </div>
     </div>
 
-    
-  </body>
-</html>
+    <div class="col-md-5">
+        Formulario de gestionar stock
+        <div class="card">
+            <div class="card-header">
+                Categorías
+            </div>
+
+            <div class="card-body">
+                <form method="POST" enctype="multipart/form-data">
+                    <div class = "form-group">
+                        <label for="txtID">ID:</label>
+                        <input type="text" class="form-control" name="txtID" id="txtID" placeholder="ID">
+                    </div>
+                    
+                    <div class = "form-group">
+                        <label for="txtID">Categoría:</label>
+                        <input type="text" class="form-control" name="txtCategoria" id="txtCategoria" placeholder="Nombre categoría">
+                    </div>
+
+                    <div class="btn-group" role="group" aria-label="">
+                        <button type="submit" name="accion" value="Agregar" class="btn btn-success">Agregar</button>
+                        <button type="submit" name="accion" value="Modificar" class="btn btn-warning">Modificar</button>
+                        <button type="submit" name="accion" value="Cancelar" class="btn btn-info">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        
+        
+        
+    </div>
+
+    <div class="col-md-7">
+        Se muestran las categorías
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Categoría</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($listaCategorias as $categoria_insumo){ ?>
+                <tr>
+                    <td><?php echo $categoria_insumo['COD_CATEGORIA_INSUMO']?></td>
+                    <td><?php echo $categoria_insumo['CATEGORIA_INSUMO']?></td>
+                    <td>Seleccionar | Borrar</td>
+                </tr>
+                <?php } ?>
+            </tbody>
+        </table> 
+    </div>
+
+<?php include("../template/pie.php");?>
