@@ -1,3 +1,16 @@
+<?php
+  session_start();
+  if(!isset($_SESSION['usuario'])){
+    header("Location:../index.php");
+  }
+  else {
+    if ($_SESSION['usuario'] == "ok") {
+      $nombreUsuario = $_SESSION["nombreUsuario"];
+      
+    }
+  }
+?>
+
 <?php $url="http://".$_SERVER['HTTP_HOST']."/SIAGCSTOCKEMBG"?>
 <!doctype html>
 <html lang="en">

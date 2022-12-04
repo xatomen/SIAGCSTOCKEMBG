@@ -17,13 +17,36 @@ switch($accion){
     break;
 
     case "Modificar":
-        echo "Presionado botón modificar";
+        // echo "Presionado botón modificar";
+        $sentenciaSQL= $conexion->prepare("UPDATE categoria_insumo SET CATEGORIA_INSUMO=:CATEGORIA_INSUMO WHERE COD_CATEGORIA_INSUMO=:COD_CATEGORIA_INSUMO");
+        $sentenciaSQL->bindParam(':CATEGORIA_INSUMO',$txtCategoria);
+        $sentenciaSQL->bindParam(':COD_CATEGORIA_INSUMO',$txtID);
+        $sentenciaSQL->execute();
+
     break;
 
     case "Cancelar":
-        echo "Presionado botón cancelar";
+        // echo "Presionado botón cancelar";
+        header("Location:stock.php");
     break;
 
+    case "Seleccionar":
+        // echo "Presionado botón seleccionar";
+        $sentenciaSQL= $conexion->prepare("SELECT * FROM categoria_insumo WHERE COD_CATEGORIA_INSUMO=:COD_CATEGORIA_INSUMO");
+        $sentenciaSQL->bindParam(':COD_CATEGORIA_INSUMO',$txtID);
+        $sentenciaSQL->execute();
+        $Categoria=$sentenciaSQL->fetch(PDO::FETCH_LAZY);
+
+        // $txtID = $Categoria['COD_CATEGORIA_INSUMO'];
+        $txtCategoria = $Categoria['CATEGORIA_INSUMO'];
+    break;
+
+    case "Borrar":
+        // echo "Presionado botón borrar";
+        $sentenciaSQL= $conexion->prepare("DELETE FROM categoria_insumo WHERE COD_CATEGORIA_INSUMO=:COD_CATEGORIA_INSUMO");
+        $sentenciaSQL->bindParam(':COD_CATEGORIA_INSUMO',$txtID);
+        $sentenciaSQL->execute();    
+    break;
 }
 
 $sentenciaSQL= $conexion->prepare("SELECT * FROM categoria_insumo");
@@ -48,12 +71,12 @@ $listaCategorias=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
                 <form method="POST" enctype="multipart/form-data">
                     <div class = "form-group">
                         <label for="txtID">ID:</label>
-                        <input type="text" class="form-control" name="txtID" id="txtID" placeholder="ID">
+                        <input type="text" class="form-control" value="<?php echo $txtID ?>" name="txtID" id="txtID" placeholder="ID">
                     </div>
                     
                     <div class = "form-group">
                         <label for="txtID">Categoría:</label>
-                        <input type="text" class="form-control" name="txtCategoria" id="txtCategoria" placeholder="Nombre categoría">
+                        <input type="text" class="form-control" value ="<?php echo $txtCategoria ?>" name="txtCategoria" id="txtCategoria" placeholder="Nombre categoría">
                     </div>
 
                     <div class="btn-group" role="group" aria-label="">
@@ -85,7 +108,15 @@ $listaCategorias=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
                 <tr>
                     <td><?php echo $categoria_insumo['COD_CATEGORIA_INSUMO']?></td>
                     <td><?php echo $categoria_insumo['CATEGORIA_INSUMO']?></td>
-                    <td>Seleccionar | Borrar</td>
+                    <td>
+                        Seleccionar | Borrar
+                        <form method="POST">
+                            <input type="hidden" name="txtID" id="txtID" value="<?php echo $categoria_insumo['COD_CATEGORIA_INSUMO']?>">
+                            <input type="submit" name="accion" value="Seleccionar" class="btn btn-primary">
+                            <input type="submit" name="accion" value="Borrar" class="btn btn-danger">
+
+                        </form>
+                    </td>
                 </tr>
                 <?php } ?>
             </tbody>

@@ -1,6 +1,17 @@
 <?php
+    session_start();
+
     if($_POST){
-        header('Location:inicio.php');
+        if($_POST){
+            if($_POST['usuario']=="develoteca" && $_POST['contrasenia']=="sistema"){ //Verificamos inicio de sesión
+                $_SESSION['usuario'] = "ok";
+                $_SESSION['nombreUsuario'] = "Develoteca";
+                header('Location:inicio.php');
+            }
+        }
+        else {
+            $mensaje = "Usuario y/o contraseña incorrectos";
+        }
     }
 ?>
 <!doctype html>
@@ -29,6 +40,11 @@
                         <class ><h2>Sistema de credenciales (Administrador)</h2></class>
                     </div>
                     <div class="card-body">
+                        <?php if(isset($mensaje)){ ?>
+                            <div class="alert alert-danger" role="alert">
+                                <?php echo $mensaje; ?>
+                            </div>
+                        <?php } ?>
                         <form method="POST">
                             <div class = "form-group">
                                 <label for="exampleInputEmail1">Usuario</label>
@@ -36,7 +52,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Contraseña:</label>
-                                <input type="password" class="form-control" name="contraseña" placeholder="Contraseña">
+                                <input type="password" class="form-control" name="contrasenia" placeholder="Contraseña">
                             </div>
                             <button type="submit" class="btn btn-primary">Ingresar al sistema</button>
                         </form>
