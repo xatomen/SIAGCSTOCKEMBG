@@ -30,7 +30,7 @@
 
     <nav class="navbar navbar-expand navbar-dark bg-dark">
         <div class="nav navbar-nav">
-            <a class="nav-item nav-link active" href="inicio.php"><img src="<?php echo $url;?>/src/logo.jpg" style='width:100px; height:100px'></a>
+            <a class="nav-item nav-link active" href="<?php echo $url;?>/administrador/inicio.php"><img src="<?php echo $url;?>/src/logo.jpg" style='width:100px; height:100px'></a>
             <a class="nav-item nav-link" href="<?php echo $url;?>/administrador/inicio.php"><H2>Inicio</H2></a>
             <a class="nav-item nav-link" href="<?php echo $url;?>/administrador/seccion/stock.php"><H2>Stock</H2></a>
             <a class="nav-item nav-link" href="<?php echo $url;?>/administrador/seccion/proveedores.php"><H2>Proveedores</H2></a>
