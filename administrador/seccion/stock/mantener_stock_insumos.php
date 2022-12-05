@@ -72,7 +72,7 @@ $listaInsumos=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
         Modificar Insumos
         <div class="card">
             <div class="card-header">
-                Categorías
+                Insumos
             </div>
 
             <div class="card-body">
