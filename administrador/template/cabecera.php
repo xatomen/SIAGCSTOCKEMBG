@@ -30,7 +30,7 @@
 
     <nav class="navbar navbar-expand navbar-dark bg-dark">
         <div class="nav navbar-nav">
-            <a class="nav-item nav-link active" href="inicio.php"><?php echo "<img src='../src/logo.jpg' style='width:100px; height:100px'>";?></a>
+            <a class="nav-item nav-link active" href="inicio.php"><img src="<?php echo $url;?>/src/logo.jpg" style='width:100px; height:100px'></a>
             <a class="nav-item nav-link" href="<?php echo $url;?>/administrador/inicio.php"><H2>Inicio</H2></a>
             <a class="nav-item nav-link" href="<?php echo $url;?>/administrador/seccion/stock.php"><H2>Stock</H2></a>
             <a class="nav-item nav-link" href="<?php echo $url;?>/administrador/seccion/proveedores.php"><H2>Proveedores</H2></a>
@@ -38,6 +38,17 @@
             <a class="nav-item nav-link" href="<?php echo $url;?>/administrador/seccion/cerrar.php"><H2>Cerrar sesión</H2></a>
         </div>
     </nav>
-    
+
+    <!-- <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown button
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+    </div> -->
+
     <div class="container">
       <div class="row">
