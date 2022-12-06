@@ -1,7 +1,40 @@
 <?php
+    session_start();
+
+    include("./config/bd.php");
+
+    $sentenciaSQL= $conexion->prepare("SELECT * FROM credenciales");
+    $sentenciaSQL->execute();
+    $listaCredenciales=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach ($listaCredenciales as $credencial)
+
+    // $username = $_POST['usuario'];
+    // $contrasenia = $_POST['contrasenia'];
+
+
     if($_POST){
-        header('Location:inicio.php');
+        if($_POST){
+            if($_POST['usuario']<>$credencial['usuario'] && $_POST['contrasenia']<>$credencial['contrasenia']){ //Verificamos inicio de sesión
+                
+            }
+            else{
+                $_SESSION['usuario'] = "ok";
+                $_SESSION['nombreUsuario'] = "usuario";
+                header('Location:inicio.php');
+            }
+            
+        }
+        else {
+            $mensaje = "Usuario y/o contraseña incorrectos";
+            echo $mensaje;
+        }
     }
+
+    $username = "";
+    $contrasenia = "";
+
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -25,10 +58,15 @@
                 <br/><br/><br/>
                 <div class="card">
                     <div class="card-header" style="text-align: center">
-                        <img src="../administrador/src/logo.jpg" style="width: 100px; height: 100px;">
+                        <img src="../src/logo.jpg" style="width: 100px; height: 100px;">
                         <class ><h2>Sistema de credenciales (Usuario)</h2></class>
                     </div>
                     <div class="card-body">
+                        <?php if(isset($mensaje)){ ?>
+                            <div class="alert alert-danger" role="alert">
+                                <?php echo $mensaje; ?>
+                            </div>
+                        <?php } ?>
                         <form method="POST">
                             <div class = "form-group">
                                 <label for="exampleInputEmail1">Usuario</label>
@@ -36,7 +74,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Contraseña:</label>
-                                <input type="password" class="form-control" name="contraseña" placeholder="Contraseña">
+                                <input type="password" class="form-control" name="contrasenia" placeholder="Contraseña">
                             </div>
                             <button type="submit" class="btn btn-primary">Ingresar al sistema</button>
                         </form>

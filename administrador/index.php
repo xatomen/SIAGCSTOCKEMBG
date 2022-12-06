@@ -36,7 +36,7 @@
                 <br/><br/><br/>
                 <div class="card">
                     <div class="card-header" style="text-align: center">
-                        <img src="../administrador/src/logo.jpg" style="width: 100px; height: 100px;">
+                        <img src="../src/logo.jpg" style="width: 100px; height: 100px;">
                         <class ><h2>Sistema de credenciales (Administrador)</h2></class>
                     </div>
                     <div class="card-body">

@@ -3,7 +3,7 @@
 <div style='text-align:center'>
     
     <H2>Bienvenido al Sistema de gestión y control de stock de insumos</H2>
-    <img src="./administrador/src/logo.jpg" style="width: 300px; height: 300px;">
+    <img src="./src/logo.jpg" style="width: 300px; height: 300px;">
     <H1>"El Mesón Beer Garden"</H1>
     
 </div>
