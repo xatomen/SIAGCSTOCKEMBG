@@ -59,6 +59,56 @@ switch($accion){
         header("Location:stock.php");
     break;
 
+
+
+    case "AgregarRegistro":
+        $sentenciaSQL2 = $conexion->prepare("INSERT INTO registro_provee (COD_REG_PROVEE, COD_PROVEE, ID_INSUMO, CANTIDAD, PRECIO, FECHA_VENCIMIENTO) VALUES (:COD_REG_PROVEE, :COD_PROVEE, :ID_INSUMO, :CANTIDAD, :PRECIO, :FECHA_VENCIMIENTO);");
+        $sentenciaSQL2->bindParam(':COD_REG_PROVEE',$txtIDRegProvee);
+        $sentenciaSQL2->bindParam(':COD_PROVEE', $txtIDProvee);
+        $sentenciaSQL2->bindParam(':ID_INSUMO',$txtIDInsumo);
+        $sentenciaSQL2->bindParam(':CANTIDAD', $txtCantidad);
+        $sentenciaSQL2->bindParam(':PRECIO', $txtPrecio);
+        $sentenciaSQL2->bindParam(':FECHA_VENCIMIENTO', $dateFechaVencimiento);
+        $sentenciaSQL2->execute();
+        echo "Presionado botón agregar";
+    break;
+
+    case "ModificarRegistro":
+        $sentenciaSQL2= $conexion->prepare("UPDATE registro_provee SET COD_PROVEE=:COD_PROVEE, ID_INSUMO=:ID_INSUMO, CANTIDAD=:CANTIDAD, PRECIO=:PRECIO, FECHA_VENCIMIENTO=:FECHA_VENCIMIENTO WHERE COD_REG_PROVEE=:COD_REG_PROVEE");
+        $sentenciaSQL2->bindParam(':COD_REG_PROVEE',$txtIDRegProvee);
+        $sentenciaSQL2->bindParam(':COD_PROVEE', $txtIDProvee);
+        $sentenciaSQL2->bindParam(':ID_INSUMO',$txtIDInsumo);
+        $sentenciaSQL2->bindParam(':CANTIDAD', $txtCantidad);
+        $sentenciaSQL2->bindParam(':PRECIO', $txtPrecio);
+        $sentenciaSQL2->bindParam(':FECHA_VENCIMIENTO', $dateFechaVencimiento);
+        $sentenciaSQL2->execute();
+
+    break;
+
+    case "SeleccionarRegistro":
+        $sentenciaSQL2= $conexion->prepare("SELECT * FROM registro_provee WHERE COD_REG_PROVEE=:COD_REG_PROVEE");
+        $sentenciaSQL2->bindParam(':COD_REG_PROVEE',$txtIDRegProvee);
+        $sentenciaSQL2->execute();
+        $RegProvee=$sentenciaSQL2->fetch(PDO::FETCH_LAZY);
+
+        $txtIDRegProvee = $RegProvee['COD_REG_PROVEE'];
+        $txtIDProvee = $RegProvee['COD_PROVEE'];
+        $txtIDInsumo = $RegProvee['ID_INSUMO'];
+        $txtCantidad = $RegProvee['CANTIDAD'];
+        $txtPrecio = $RegProvee['PRECIO'];
+        $dateFechaVencimiento = $RegProvee['FECHA_VENCIMIENTO'];
+    break;
+
+    case "BorrarRegistro":
+        $sentenciaSQL2= $conexion->prepare("DELETE FROM registro_provee WHERE COD_REG_PROVEE=:COD_REG_PROVEE");
+        $sentenciaSQL2->bindParam(':COD_REG_PROVEE',$txtIDRegProvee);
+        $sentenciaSQL2->execute();    
+    break;
+
+    case "Cancelar":
+        header("Location:stock.php");
+    break;
+
 }
 
 
@@ -153,9 +203,9 @@ $listaRegistroProvee=$sentenciaSQL2->fetchAll(PDO::FETCH_ASSOC);
                     </div>
 
                     <div class="btn-group" role="group" aria-label="">
-                        <button type="submit" name="accion" value="AgregarCabecera" class="btn btn-success">Agregar</button>
-                        <button type="submit" name="accion" value="ModificarCabecera" class="btn btn-warning">Modificar</button>
-                        <button type="submit" name="accion" value="CancelarCabecera" class="btn btn-info">Cancelar</button>
+                        <button type="submit" name="accion" value="AgregarRegistro" class="btn btn-success">Agregar</button>
+                        <button type="submit" name="accion" value="ModificarRegistro" class="btn btn-warning">Modificar</button>
+                        <button type="submit" name="accion" value="CancelarRegistro" class="btn btn-info">Cancelar</button>
                     </div>
                 </form>
             </div>
@@ -222,9 +272,9 @@ $listaRegistroProvee=$sentenciaSQL2->fetchAll(PDO::FETCH_ASSOC);
                     <td>
                         Seleccionar | Borrar
                         <form method="POST">
-                            <input type="hidden" name="txtID" id="txtID" value="<?php echo $registro['COD_PROVEE']?>">
-                            <input type="submit" name="accion" value="Seleccionar" class="btn btn-primary">
-                            <input type="submit" name="accion" value="Borrar" class="btn btn-danger">
+                            <input type="hidden" name="txtIDRegProvee" id="txtIDRegProvee" value="<?php echo $registro['COD_REG_PROVEE']?>">
+                            <input type="submit" name="accion" value="SeleccionarRegistro" class="btn btn-primary">
+                            <input type="submit" name="accion" value="BorrarRegistro" class="btn btn-danger">
 
                         </form>
                     </td>
