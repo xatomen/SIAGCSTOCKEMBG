@@ -55,9 +55,6 @@ switch($accion){
         $sentenciaSQL->execute();    
     break;
 
-    case "Cancelar":
-        header("Location:stock.php");
-    break;
 
 
 
