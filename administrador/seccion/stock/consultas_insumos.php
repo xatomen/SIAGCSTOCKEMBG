@@ -16,6 +16,7 @@ switch($accion){
         $sentenciaSQL= $conexion->prepare("UPDATE insumo SET STOCK=STOCK+1 WHERE ID_INSUMO=$txtID");
         $sentenciaSQL->execute();
         echo "Presionado botón agregar";
+        
     break;
 
     case "Quitar":
@@ -30,50 +31,19 @@ $sentenciaSQL= $conexion->prepare("SELECT * FROM insumo");
 $sentenciaSQL->execute();
 $listaInsumos=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 
+$sentenciaSQL2= $conexion->prepare("SELECT * FROM categoria_insumo");
+$sentenciaSQL2->execute();
+$listaCategorias=$sentenciaSQL2->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
-    <div class="container">
-            <h1 class="text">Mostrar stock disponible</h1>
-    </div>
-
-    <div class="col-md-7">
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Categoría</th>
-                    <th>Stock</th>
-                    <th>Nombre</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach($listaInsumos as $insumo){ ?>
-                <tr>
-                    <td><?php echo $insumo['ID_INSUMO']?></td>
-                    <td><?php echo $insumo['COD_CATEGORIA_INSUMO']?></td>
-                    <td><?php echo $insumo['STOCK']?></td>
-                    <td><?php echo $insumo['NOMBRE']?></td>
-                    <td> Añadir 1 | Quitar 1
-
-                        <form method="POST">
-                            <input type="hidden" name="txtID" id="txtID" value="<?php echo $insumo['ID_INSUMO']?>">
-                            <input type="submit" name="accion" value="Agregar" class="btn btn-primary">
-                            <input type="submit" name="accion" value="Quitar" class="btn btn-danger">
-
-                        </form>
-
-                    </td>
-                </tr>
-                <?php } ?>
-            </tbody>
-        </table> 
-    </div>
+    
 
     <div class="container">
             <h1 class="text">Buscar stock específico</h1>
     </div>
 
-    <div class="col-md-5">
+    <div class="col-md-2">
         Buscar por ID
         <div class="card">
             <div class="card-header">
@@ -94,11 +64,13 @@ $listaInsumos=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 
-    <div class="col-md-7">
+    <div class="col-md-10">
+        Stock por ID
         <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>ID Categoría</th>
                     <th>Categoría</th>
                     <th>Stock</th>
                     <th>Nombre</th>
@@ -110,6 +82,7 @@ $listaInsumos=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
                 <tr>
                     <td><?php echo $insumo['ID_INSUMO'] ?></td>
                     <td><?php echo $insumo['COD_CATEGORIA_INSUMO'] ?></td>
+                    <td><?php foreach($listaCategorias as $categoria){if($categoria['COD_CATEGORIA_INSUMO']==$insumo['COD_CATEGORIA_INSUMO']){echo $categoria['CATEGORIA_INSUMO'];}} ?></td>
                     <td><?php echo $insumo['STOCK'] ?></td>
                     <td><?php echo $insumo['NOMBRE'] ?></td>
                     <td> Añadir 1 | Quitar 1
@@ -132,7 +105,7 @@ $listaInsumos=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
             <h1 class="text">Mostrar insumos por categoría</h1>
     </div>
 
-    <div class="col-md-5">
+    <div class="col-md-2">
         Buscar por ID de Categoría
         <div class="card">
             <div class="card-header">
@@ -153,11 +126,14 @@ $listaInsumos=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 
-    <div class="col-md-7">
+    <div class="col-md-10">
+        Stock por categoría </br>
+        -
         <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>ID Categoría</th>
                     <th>Categoría</th>
                     <th>Stock</th>
                     <th>Nombre</th>
@@ -169,6 +145,7 @@ $listaInsumos=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
                 <tr>
                     <td><?php echo $insumo['ID_INSUMO'] ?></td>
                     <td><?php echo $insumo['COD_CATEGORIA_INSUMO'] ?></td>
+                    <td><?php foreach($listaCategorias as $categoria){if($categoria['COD_CATEGORIA_INSUMO']==$insumo['COD_CATEGORIA_INSUMO']){echo $categoria['CATEGORIA_INSUMO'];}} ?></td>
                     <td><?php echo $insumo['STOCK'] ?></td>
                     <td><?php echo $insumo['NOMBRE'] ?></td>
                     <td> Añadir 1 | Quitar 1
@@ -183,6 +160,46 @@ $listaInsumos=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
                 </tr>
                 <?php }
                 } ?>
+            </tbody>
+        </table> 
+    </div>
+
+
+    <div class="container">
+            <h1 class="text">Mostrar stock disponible</h1>
+    </div>
+
+    <div class="col-md-10">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>ID Categoría</th>
+                    <th>Categoría</th>
+                    <th>Stock</th>
+                    <th>Nombre</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($listaInsumos as $insumo){ ?>
+                <tr>
+                    <td><?php echo $insumo['ID_INSUMO']?></td>
+                    <td><?php echo $insumo['COD_CATEGORIA_INSUMO']?></td>
+                    <td><?php foreach($listaCategorias as $categoria){if($categoria['COD_CATEGORIA_INSUMO']==$insumo['COD_CATEGORIA_INSUMO']){echo $categoria['CATEGORIA_INSUMO'];}} ?></td>
+                    <td><?php echo $insumo['STOCK']?></td>
+                    <td><?php echo $insumo['NOMBRE']?></td>
+                    <td> Añadir 1 | Quitar 1
+
+                        <form method="POST">
+                            <input type="hidden" name="txtID" id="txtID" value="<?php echo $insumo['ID_INSUMO']?>">
+                            <input type="submit" name="accion" value="Agregar" class="btn btn-primary">
+                            <input type="submit" name="accion" value="Quitar" class="btn btn-danger">
+
+                        </form>
+
+                    </td>
+                </tr>
+                <?php } ?>
             </tbody>
         </table> 
     </div>

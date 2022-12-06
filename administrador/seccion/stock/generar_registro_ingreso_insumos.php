@@ -129,7 +129,7 @@ $listaRegistroProvee=$sentenciaSQL2->fetchAll(PDO::FETCH_ASSOC);
     </div>
 
 
-    <div class="col-md-5">
+    <div class="col-md-4">
         Modificar Registro
         <div class="card">
             <div class="card-header">
@@ -163,7 +163,7 @@ $listaRegistroProvee=$sentenciaSQL2->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 
-    <div class="col-md-5">
+    <div class="col-md-4">
         Modificar Registro
         <div class="card">
             <div class="card-header">
@@ -214,7 +214,7 @@ $listaRegistroProvee=$sentenciaSQL2->fetchAll(PDO::FETCH_ASSOC);
 
     </br>
 
-    <div class="col-md-7">
+    <div class="col-md-10">
         Se muestran la cabecera del registro
         <table class="table table-bordered">
             <thead>
@@ -246,7 +246,7 @@ $listaRegistroProvee=$sentenciaSQL2->fetchAll(PDO::FETCH_ASSOC);
         </table> 
     </div>
 
-    <div class="col-md-7">
+    <div class="col-md-10">
         Se muestran los registros
         <table class="table table-bordered">
             <thead>

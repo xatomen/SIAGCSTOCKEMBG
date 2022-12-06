@@ -38,6 +38,10 @@ $sentenciaSQL5= $conexion->prepare("SELECT * FROM registro_provee ORDER BY FECHA
 $sentenciaSQL5->execute();
 $listaRegistroProvee4=$sentenciaSQL5->fetchAll(PDO::FETCH_ASSOC);
 
+$sentenciaSQL10= $conexion->prepare("SELECT * FROM insumo");
+$sentenciaSQL10->execute();
+$listaInsumos=$sentenciaSQL10->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 
@@ -65,13 +69,14 @@ $listaRegistroProvee4=$sentenciaSQL5->fetchAll(PDO::FETCH_ASSOC);
                     <td><?php echo $cabecera['COD_PROVEEDOR']?></td>
                     <td><?php echo $cabecera['FECHA']?></td>
                     <td>
-                        <div class="col-md-7">
+                        <div class="col-md-15">
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th>ID Registro</th>
                                         <th>ID Provee</th>
                                         <th>ID Insumo</th>
+                                        <th>Nombre Insumo</th>
                                         <th>Cantidad</th>
                                         <th>Precio</th>
                                         <th>Fecha Vencimiento</th>
@@ -83,6 +88,7 @@ $listaRegistroProvee4=$sentenciaSQL5->fetchAll(PDO::FETCH_ASSOC);
                                     <td><?php echo $registro['COD_REG_PROVEE']?></td>
                                     <td><?php echo $registro['COD_PROVEE']?></td>
                                     <td><?php echo $registro['ID_INSUMO']?></td>
+                                    <td><?php foreach($listaInsumos as $insumo){if($insumo['ID_INSUMO']==$registro['ID_INSUMO']){echo $insumo['NOMBRE'];}} ?></td>
                                     <td><?php echo $registro['CANTIDAD']?></td>
                                     <td><?php echo $registro['PRECIO']?></td>
                                     <td><?php echo $registro['FECHA_VENCIMIENTO']?></td>
@@ -113,6 +119,7 @@ $listaRegistroProvee4=$sentenciaSQL5->fetchAll(PDO::FETCH_ASSOC);
                 <th>ID Registro</th>
                     <th>ID Provee</th>
                     <th>ID Insumo</th>
+                    <th>Nombre Insumo</th>
                     <th>Cantidad</th>
                     <th>Precio</th>
                     <th>Fecha Vencimiento</th>
@@ -124,6 +131,7 @@ $listaRegistroProvee4=$sentenciaSQL5->fetchAll(PDO::FETCH_ASSOC);
                     <td><?php echo $registro2['COD_REG_PROVEE']?></td>
                     <td><?php echo $registro2['COD_PROVEE']?></td>
                     <td><?php echo $registro2['ID_INSUMO']?></td>
+                    <td><?php foreach($listaInsumos as $insumo){if($insumo['ID_INSUMO']==$registro2['ID_INSUMO']){echo $insumo['NOMBRE'];}} ?></td>
                     <td><?php echo $registro2['CANTIDAD']?></td>
                     <td><?php echo $registro2['PRECIO']?></td>
                     <td><?php echo $registro2['FECHA_VENCIMIENTO']?></td>
@@ -141,6 +149,7 @@ $listaRegistroProvee4=$sentenciaSQL5->fetchAll(PDO::FETCH_ASSOC);
                 <th>ID Registro</th>
                     <th>ID Provee</th>
                     <th>ID Insumo</th>
+                    <th>Nombre Insumo</th>
                     <th>Cantidad</th>
                     <th>Precio</th>
                     <th>Fecha Vencimiento</th>
@@ -152,6 +161,7 @@ $listaRegistroProvee4=$sentenciaSQL5->fetchAll(PDO::FETCH_ASSOC);
                     <td><?php echo $registro3['COD_REG_PROVEE']?></td>
                     <td><?php echo $registro3['COD_PROVEE']?></td>
                     <td><?php echo $registro3['ID_INSUMO']?></td>
+                    <td><?php foreach($listaInsumos as $insumo){if($insumo['ID_INSUMO']==$registro3['ID_INSUMO']){echo $insumo['NOMBRE'];}} ?></td>
                     <td><?php echo $registro3['CANTIDAD']?></td>
                     <td><?php echo $registro3['PRECIO']?></td>
                     <td><?php echo $registro3['FECHA_VENCIMIENTO']?></td>
@@ -175,6 +185,7 @@ $listaRegistroProvee4=$sentenciaSQL5->fetchAll(PDO::FETCH_ASSOC);
                 <th>ID Registro</th>
                     <th>ID Provee</th>
                     <th>ID Insumo</th>
+                    <th>Nombre Insumo</th>
                     <th>Cantidad</th>
                     <th>Precio</th>
                     <th>Fecha Vencimiento</th>
@@ -186,6 +197,7 @@ $listaRegistroProvee4=$sentenciaSQL5->fetchAll(PDO::FETCH_ASSOC);
                     <td><?php echo $registro3['COD_REG_PROVEE']?></td>
                     <td><?php echo $registro3['COD_PROVEE']?></td>
                     <td><?php echo $registro3['ID_INSUMO']?></td>
+                    <td><?php foreach($listaInsumos as $insumo){if($insumo['ID_INSUMO']==$registro3['ID_INSUMO']){echo $insumo['NOMBRE'];}} ?></td>
                     <td><?php echo $registro3['CANTIDAD']?></td>
                     <td><?php echo $registro3['PRECIO']?></td>
                     <td><?php echo $registro3['FECHA_VENCIMIENTO']?></td>

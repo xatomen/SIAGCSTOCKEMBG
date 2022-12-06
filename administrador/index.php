@@ -3,9 +3,9 @@
 
     if($_POST){
         if($_POST){
-            if($_POST['usuario']=="develoteca" && $_POST['contrasenia']=="sistema"){ //Verificamos inicio de sesión
+            if($_POST['usuario']=="administrador" && $_POST['contrasenia']=="sistema1234"){ //Verificamos inicio de sesión
                 $_SESSION['usuario'] = "ok";
-                $_SESSION['nombreUsuario'] = "Develoteca";
+                $_SESSION['nombreUsuario'] = "Administrador";
                 header('Location:inicio.php');
             }
         }
@@ -48,13 +48,14 @@
                         <form method="POST">
                             <div class = "form-group">
                                 <label for="exampleInputEmail1">Usuario</label>
-                                <input type="text" class="form-control" name="usuario" placeholder="12345678-9">
+                                <input type="text" class="form-control" name="usuario" placeholder="RUT (123456789)">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Contraseña:</label>
                                 <input type="password" class="form-control" name="contrasenia" placeholder="Contraseña">
                             </div>
                             <button type="submit" class="btn btn-primary">Ingresar al sistema</button>
+                            <a name="IS" id="IS" class="btn btn-primary" href="../index.php" role="button">Volver al inicio</a>
                         </form>
                         
                         
