@@ -33,6 +33,10 @@ $sentenciaSQL3= $conexion->prepare("SELECT * FROM telefono_proveedor");
 $sentenciaSQL3->execute();
 $listaTelefonos=$sentenciaSQL3->fetchAll(PDO::FETCH_ASSOC);
 
+$sentenciaSQL5= $conexion->prepare("SELECT * FROM tipo_fono");
+$sentenciaSQL5->execute();
+$listaTipoFono=$sentenciaSQL5->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
     <div class="container">
@@ -49,6 +53,8 @@ $listaTelefonos=$sentenciaSQL3->fetchAll(PDO::FETCH_ASSOC);
                     <th>Información</th>
                     <th>Dirección</th>
                     <th>Horario</th>
+                    <th>Correos</th>
+                    <th>Teléfonos</th>
                 </tr>
             </thead>
             <tbody>
@@ -59,6 +65,54 @@ $listaTelefonos=$sentenciaSQL3->fetchAll(PDO::FETCH_ASSOC);
                     <td><?php echo $proveedores['INFORMACION']?></td>
                     <td><?php echo $proveedores['DIRECCION']?></td>
                     <td><?php echo $proveedores['HORARIO']?></td>
+                    <td>
+                        <div class="col-md-50">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>ID Correo</th>
+                                        <th>ID Proveedor</th>
+                                        <th>Correo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach($listaCorreos as $correos){ if($correos['COD_PROVEEDOR']==$proveedores['COD_PROVEEDOR']){ ?>
+                                    <tr>
+                                        <td><?php echo $correos['COD_CORREO_PROVEEDOR']?></td>
+                                        <td><?php echo $correos['COD_PROVEEDOR']?></td>
+                                        <td><?php echo $correos['CORREO']?></td>
+                                    </tr>
+                                    <?php } } ?>
+                                </tbody>
+                            </table> 
+                        </div>
+                    </td>
+                    <td>
+                        <div class="col-md-50">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>ID Telefono</th>
+                                        <th>ID Proveedor</th>
+                                        <th>ID Tipo Fono</th>
+                                        <th>Tipo Fono</th>
+                                        <th>Teléfono</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach($listaTelefonos as $telefonos){ if($telefonos['COD_PROVEEDOR']==$proveedores['COD_PROVEEDOR']){ ?>
+                                    <tr>
+                                        <td><?php echo $telefonos['COD_TELEFONO']?></td>
+                                        <td><?php echo $telefonos['COD_PROVEEDOR']?></td>
+                                        <td><?php echo $telefonos['COD_TIPO_FONO']?></td>
+                                        <td><?php foreach($listaTipoFono as $tipoFono){if($telefonos['COD_TIPO_FONO']==$tipoFono['COD_TIPO_FONO']){echo $tipoFono['TIPO_FONO'];}} ?></td>
+                                        <td><?php echo $telefonos['NUMERO_TELEFONO']?></td>
+                                    </tr>
+                                    <?php } } ?>
+                                </tbody>
+                            </table> 
+                        </div>
+                    </td>
                 </tr>
                 <?php } ?>
             </tbody>
@@ -100,10 +154,12 @@ $listaTelefonos=$sentenciaSQL3->fetchAll(PDO::FETCH_ASSOC);
             </thead>
             <tbody>
                 <?php foreach($listaTelefonos as $telefonos){ ?>
+                
                 <tr>
                     <td><?php echo $telefonos['COD_TELEFONO']?></td>
                     <td><?php echo $telefonos['COD_PROVEEDOR']?></td>
-                    <td><?php echo $telefonos['COD_TIPO_FONO']?></td>
+                    <td><?php foreach($listaTipoFono as $tipoFono){if($telefonos['COD_TIPO_FONO']==$tipoFono['COD_TIPO_FONO']){echo $tipoFono['TIPO_FONO'];}} ?></td>
+                    <!-- <td><?php echo $telefonos['COD_TIPO_FONO']?></td> -->
                     <td><?php echo $telefonos['NUMERO_TELEFONO']?></td>
                 </tr>
                 <?php } ?>
